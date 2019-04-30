@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">dsuserver_form.dsuserver_form_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="delete" class="Magefan\DSUServer\Block\Adminhtml\Edit\DeleteButton"/>
+            <button name="save" class="Magefan\DSUServer\Block\Adminhtml\Edit\SaveButton"/>
+        </buttons>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>dsuserver_form.dsuserver_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="dsuserver_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="magefan/dsuserver/save"/>
+        </settings>
+        <dataProvider class="Magefan\DSUServer\Ui\Component\Source\Form\DataProvider"
+                      name="dsuserver_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="5">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">General Configurations</label>
+            <opened>true</opened>
+        </settings>
+        <field name="id" formElement="input">
+            <settings>
+                <visible>false</visible>
+            </settings>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magefan\DSUServer\Ui\Component\Source\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="name" sortOrder="2" formElement="input">
+            <settings>
+                <label translate="true">Name</label>
+            </settings>
+        </field>
+        <field name="email" sortOrder="3" formElement="input">
+            <settings>
+                <label translate="true">Email</label>
+            </settings>
+        </field>
+        <field name="secret" sortOrder="4" formElement="input">
+            <settings>
+                <label translate="true">Secret</label>
+            </settings>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magefan" translate="label" sortOrder="10">
+            <label>Magefan Extensions</label>
+        </tab>
+        <section id="dsuserver" translate="label" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>Development Store Update (Server)</label>
+            <tab>magefan</tab>
+            <resource>Magefan_DSUServer::config_dsuserver</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>General</label>
+                <attribute type="expanded">1</attribute>
+                <field id="version" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <frontend_model>Magefan\DSUServer\Block\Adminhtml\System\Config\Form\Info</frontend_model>
+                </field>
+                <field id="enabled" translate="label comment" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="allowed_ips" translate="label comment" type="textarea" sortOrder="2" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Allowed IPs (comma separated)</label>
+                    <validate>required-entry</validate>
+                    <comment>Enter dev or stage server IPs separated by comma.</comment>
+                </field>
+                <field id="allowed_email" translate="label comment" type="textarea" sortOrder="2" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Allowed Email Addresses (comma separated)</label>
+                    <validate>required-entry</validate>
+                    <comment>Enter email addresses separated by comma.</comment>
+                </field>
+            </group>
+            <group id="update_requests" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Update Requests</label>
+                <field id="new_request_lifetime" translate="label comment" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>New Request Lifetime (hours)</label>
+                </field>
+                <field id="approved_request_lifetime" translate="label comment" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Approved Request Lifetime (hours)</label>
+                </field>
+                <field id="declined_request_lifetime" translate="label comment" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Declined Request Lifetime (hours)</label>
+                </field>
+            </group>
+            <group id="request_email" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Request Emails</label>
+                <field id="sender" translate="label comment" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="new_enabled" translate="label comment" type="select" sortOrder="2" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Enable New Request Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="new_send_to" translate="label comment" type="textarea" sortOrder="3" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Send New Request Email To</label>
+                    <validate>required-entry</validate>
+                    <comment>Comma-separated.</comment>
+                    <depends>
+                        <field id="new_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="new_template" translate="label comment" type="select" sortOrder="4" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>New Request Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="new_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="approved_enabled" translate="label comment" type="select" sortOrder="6" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Enable Approved Request Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="approved_template" translate="label comment" type="select" sortOrder="7" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Approved Request Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="approved_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="declined_enabled" translate="label comment" type="select" sortOrder="9" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Enable Declined Request Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="declined_template" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Declined Request Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="declined_enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="transform_data" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Transform Data</label>
+                <field id="enabledtd" translate="label comment" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Enable Transform Data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="exclude_data" translate="label" type="text" sortOrder="20" showInDefault="1"
+                   showInWebsite="0"
+                   showInStore="0">
+                <label>Exclude Data</label>
+                <field id="customers" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Exclude Customers Data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="subscribers" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Exclude Subscribers Data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="sales" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Exclude Sales Data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="logs" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Exclude Logs Data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="custom" translate="label comment" type="textarea" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Custom Data (comma separated)</label>
+                    <comment>Enter exclude your custom tables separated by comma.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

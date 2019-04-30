@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <dsuserver>
+            <general>
+                <enabled>0</enabled>
+            </general>
+            <update_requests>
+                <new_request_lifetime>48</new_request_lifetime>
+                <approved_request_lifetime>12</approved_request_lifetime>
+                <declined_request_lifetime>8</declined_request_lifetime>
+            </update_requests>
+            <request_email>
+                <sender>owner</sender>
+                <new_enabled>1</new_enabled>
+                <approved_enabled>1</approved_enabled>
+                <declined_enabled>1</declined_enabled>
+            </request_email>
+            <transform_data>
+                <enabledtd>1</enabledtd>
+            </transform_data>
+            <exclude_data>
+                <customers>1</customers>
+                <subscribers>1</subscribers>
+                <sales>1</sales>
+                <logs>1</logs>
+            </exclude_data>
+        </dsuserver>
+    </default>
+</config>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="Magefan\DSUServer\Api\MediaDumpInterface"               type="Magefan\DSUServer\Model\Dump\Media"/>
+    <preference for="Magefan\DSUServer\Api\ConfigurationTablesDumpInterface" type="Magefan\DSUServer\Model\Configuration"/>
+    <preference for="Magefan\DSUServer\Api\CmsTablesDumpInterface"           type="Magefan\DSUServer\Model\Cms"/>
+    <preference for="Magefan\DSUServer\Api\BlogTablesDumpInterface"          type="Magefan\DSUServer\Model\Blog"/>
+    <preference for="Magefan\DSUServer\Api\DatabaseDumpInterface"            type="Magefan\DSUServer\Model\Dump\Database"/>
+    <preference for="Magefan\DSUServer\Api\NewRequestInterface"              type="Magefan\DSUServer\Model\NewRequest"/>
+    <preference for="Magefan\DSUServer\Api\RequestRepositoryInterface"       type="Magefan\DSUServer\Model\RequestRepository"/>
+
+    <virtualType name="Magefan\DSUServer\Model\Blog" type="Magefan\DSUServer\Model\Dump\Database">
+        <arguments>
+            <argument name="tables" xsi:type="string">magefan_blog_category,magefan_blog_category_store,magefan_blog_comment,magefan_blog_post,magefan_blog_post_category,magefan_blog_post_relatedpost,magefan_blog_post_relatedproduct,magefan_blog_post_store,magefan_blog_post_tag,magefan_blog_tag</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magefan\DSUServer\Model\Cms" type="Magefan\DSUServer\Model\Dump\Database">
+        <arguments>
+            <argument name="tables" xsi:type="string">cms_block,cms_block_store,cms_page,cms_page_store</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magefan\DSUServer\Model\Configuration" type="Magefan\DSUServer\Model\Dump\Database">
+        <arguments>
+            <argument name="tables" xsi:type="string">core_config_data</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magefan\DSUServer\Model\ResourceModel\Request\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magefan_dsu_request</argument>
+            <argument name="resourceModel" xsi:type="string">Magefan\DSUServer\Model\ResourceModel\Request</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dsuserver_listing_data_source" xsi:type="string">Magefan\DSUServer\Model\ResourceModel\Request\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magefan\DSUServer\Model\ResourceModel\Request">
+        <plugin name="Plugin_Magefan_DSUServer_Model_ResourceModel" type="Magefan\DSUServer\Plugin\RequestPlugin" sortOrder="10" disabled="false"  />
+    </type>
+</config>

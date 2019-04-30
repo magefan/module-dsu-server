@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="dsuserver_request_email_new_template" label="New Email template" file="request_new.html" type="html" module="Magefan_DSUServer" area="frontend"/>
+    <template id="dsuserver_request_email_approved_template" label="Approved Email template" file="request_approved.html" type="html" module="Magefan_DSUServer" area="frontend"/>
+    <template id="dsuserver_request_email_declined_template" label="Declined Email template" file="request_declined.html" type="html" module="Magefan_DSUServer" area="frontend"/>
+</config>

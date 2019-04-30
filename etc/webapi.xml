@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/dsuserver/get/media/" method="POST">
+        <service class="Magefan\DSUServer\Api\MediaDumpInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/dsuserver/get/configuration/" method="POST">
+        <service class="Magefan\DSUServer\Api\ConfigurationTablesDumpInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/dsuserver/get/cms/" method="POST">
+        <service class="Magefan\DSUServer\Api\CmsTablesDumpInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/dsuserver/get/blog/" method="POST">
+        <service class="Magefan\DSUServer\Api\BlogTablesDumpInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/dsuserver/get/database/" method="POST">
+        <service class="Magefan\DSUServer\Api\DatabaseDumpInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/dsuserver/request/:name/:email" method="PUT">
+        <service class="Magefan\DSUServer\Api\NewRequestInterface" method="create"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

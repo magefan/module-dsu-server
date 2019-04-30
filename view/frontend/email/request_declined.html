@@ -1,0 +1,29 @@
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<!--@subject {{trans "Your DSU Request at %store_name has been declined" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var request.getName":"Requester Name",
+"var request.getEmail":"Requester Email"
+"var request.getSecret":"Requester Secret"
+} @-->
+
+
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "Hello."}}</p>
+
+<p>
+    {{trans "Your DSU Request at %store_name has been declined" store_name=$store.getFrontendName()}}
+</p>
+
+<ul>
+    <li><strong>{{trans "Name:"}}</strong> {{var request.getName()}}</li>
+    <li><strong>{{trans "Email:"}}</strong> {{var request.getEmail()}}</li>
+</ul>
+
+{{template config_path="design/email/footer_template"}}

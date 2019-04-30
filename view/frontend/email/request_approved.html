@@ -1,0 +1,45 @@
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<!--@subject {{trans "Your DSU Request at %store_name has been approved" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var request.getName":"Requester Name",
+"var request.getEmail":"Requester Email"
+"var request.getSecret":"Requester Secret"
+} @-->
+
+
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "Hello."}}</p>
+
+<p>
+    {{trans "Your DSU Request at %store_name has been approved" store_name=$store.getFrontendName()}}
+</p>
+
+<ul>
+    <li><strong>{{trans "Email:"}}</strong> {{var request.getEmail()}}</li>
+    <li><strong>{{trans "Secret:"}}</strong> {{var request.getSecret()}}</li>
+</ul>
+
+<p><strong>{{trans "Update Database:"}}</strong></p>
+<p><textarea style="width: 100%;height: 100px;">php bin/magento dsu:update:db {{var request.getEmail()}} {{var request.getSecret()}}</textarea></p>
+
+<p><strong>{{trans "Update Media:"}}</strong></p>
+<p><textarea style="width: 100%;height: 100px;">php bin/magento dsu:update:media {{var request.getEmail()}} {{var request.getSecret()}}</textarea></p>
+
+<p><strong>{{trans "Update Config:"}}</strong></p>
+<p><textarea style="width: 100%;height: 100px;">php bin/magento dsu:update:config {{var request.getEmail()}} {{var request.getSecret()}}</textarea></p>
+
+<p><strong>{{trans "Update Cms:"}}</strong></p>
+<p><textarea style="width: 100%;height: 100px;">php bin/magento dsu:update:cms {{var request.getEmail()}} {{var request.getSecret()}}</textarea></p>
+
+<p><strong>{{trans "Update Magefan Blog:"}}</strong></p>
+<p><textarea style="width: 100%;height: 100px;">php bin/magento dsu:update:blog {{var request.getEmail()}} {{var request.getSecret()}}</textarea></p>
+
+
+{{template config_path="design/email/footer_template"}}

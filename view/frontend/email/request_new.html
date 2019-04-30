@@ -1,0 +1,33 @@
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<!--@subject {{trans "New DSU Request at %store_name" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var request.getName":"Requester Name",
+"var request.getEmail":"Requester Email"
+"var request.getApproveUrl":"Approve Url"
+"var request.getDeclineUrl":"Decline Url
+} @-->
+
+
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "Hello."}}</p>
+<p>
+    {{trans "There is a new DSU request at %store_name" store_name=$store.getFrontendName()}}
+</p>
+<ul>
+    <li><strong>{{trans "Name:"}}</strong> {{var request.getName()}}</li>
+    <li><strong>{{trans "Email:"}}</strong> {{var request.getEmail()}}</li>
+</ul>
+<p>
+    <a href="{{var request.getApproveUrl()}}">{{trans "Approved"}}</a>
+    {{trans "or"}}
+    <a href="{{var request.getDeclineUrl()}}">{{trans "Declined"}}</a>
+</p>
+
+{{template config_path="design/email/footer_template"}}
