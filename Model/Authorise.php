@@ -132,7 +132,7 @@ class Authorise
             throw new LocalizedException(__('The DSU Server is disabled.'));
         }
         if (!$this->config->isAllowedIPs()) {
-            throw new LocalizedException(__('Your IP is not whitelisted on the DSU Server.'));
+            throw new LocalizedException(__('Your IP ' . $this->config->getRemoteAddress() . ' is not whitelisted on the DSU Server.'));
         }
         if (!$this->config->isAllowedEmail($email)) {
             throw new LocalizedException(__('Your Email is not whitelisted on the DSU Server.'));
