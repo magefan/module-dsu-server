@@ -147,6 +147,14 @@ class Config
     }
 
     /**
+     * @return string
+     */
+    public function getRemoteAddress()
+    {
+        return $this->remoteAddress->getRemoteAddress();
+    }
+
+    /**
      * @param string $email
      * @return bool
      */
