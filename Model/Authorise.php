@@ -100,11 +100,11 @@ class Authorise
 
         $filter1 = $this->filterBuilder
             ->setField('secret')
-            ->setValue($data['secret'])
+            ->setValue((string)$data['secret'])
             ->create();
         $filter2 = $this->filterBuilder
             ->setField('email')
-            ->setValue($data['email'])
+            ->setValue((string)$data['email'])
             ->create();
         $filter3 = $this->filterBuilder
             ->setField('status')
