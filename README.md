@@ -4,7 +4,7 @@ Server Side for [Magento 2 Development Store Update by Magefan](https://github.c
 [![Total Downloads](https://poser.pugx.org/magefan/module-dsu/downloads)](https://packagist.org/packages/magefan/module-dsu)
 [![Latest Stable Version](https://poser.pugx.org/magefan/module-dsu/v/stable)](https://packagist.org/packages/magefan/module-dsu)
 
-<a href="https://www.comebackalive.in.ua/donate"><img width="830" height="208" src="https://cm.magefan.com/blog/support-ukraine.png"></a>
+<a href="https://savelife.in.ua/en/donate-en/#donate-army-card-monthly"><img width="830" height="208" src="https://cm.magefan.com/blog/support-ukraine.png"></a>
 
 This [Magento 2 module](https://magefan.com/magento2-extensions) allows you to easily update dev/stage database and media folder
 
